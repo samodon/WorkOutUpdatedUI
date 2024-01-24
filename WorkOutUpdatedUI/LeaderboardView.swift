@@ -131,7 +131,7 @@ struct LeaderboardCard: View {
 
     init(challengeImage: String, entries: [LeaderboardEntry]) {
         self.challengeImage = challengeImage
-        self.entries = entries
+        self.entries = entries.sorted { $0.score > $1.score }
     }
 
     var body: some View {

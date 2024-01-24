@@ -15,6 +15,7 @@ func generateSampleData() -> [DailyCalories] {
 }
 
 struct CalorieChartView: View {
+    @Environment(\.colorScheme) var colorScheme
     // Generate the sample data and store it in a property
     let weekData = generateSampleData()
     
@@ -26,12 +27,32 @@ struct CalorieChartView: View {
                     y: .value("Calories", dayData.caloriesBurnt) // Calories as y value
                 )
                 .lineStyle(StrokeStyle(lineWidth: 2))
-                .foregroundStyle(Color(.black))
+                .foregroundStyle(colorScheme == .dark ? .white : .black)
                 PointMark(
                     x: .value("Day", dayData.day),
                     y: .value("Calories", dayData.caloriesBurnt)
                 )
-                .foregroundStyle(Color(.black))
+                .foregroundStyle(colorScheme == .dark ? .white : .black)
+            }
+        }
+        .chartXAxis {
+            AxisMarks(values: .automatic) { _ in
+                AxisGridLine(centered: true, stroke: StrokeStyle(dash: [1, 2, 4]))
+                    // Gridline style
+                AxisTick(stroke: StrokeStyle(lineWidth: 2))
+                    // Tick style
+                AxisValueLabel()
+                    .foregroundStyle(colorScheme == .dark ? Color.black : Color.black) // Dynamic color for labels
+            }
+        }
+        .chartYAxis {
+            AxisMarks(values: .automatic) { _ in
+                AxisGridLine(centered: true, stroke: StrokeStyle(dash: [1, 2]))
+                    // Gridline style
+                AxisTick(centered: true, stroke: StrokeStyle(lineWidth: 2))
+                    // Tick style
+                AxisValueLabel()
+                    .foregroundStyle(colorScheme == .dark ? Color.black : Color.black) // Dynamic color for labels
             }
         }
         .padding()

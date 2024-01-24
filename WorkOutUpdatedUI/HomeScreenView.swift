@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeScreenView: View {
+    @Environment(\.colorScheme) var colorScheme
     init() {}
 
     var body: some View {
@@ -25,7 +26,7 @@ struct HomeScreenView: View {
                     NavigationLink(destination: WorkOutsView()) {
                         Image(systemName: "chevron.compact.right")
                             .opacity(1)
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
                     }
                 }
                 .padding()
@@ -61,13 +62,13 @@ struct HomeScreenView: View {
                     // action for leading button
                 }, label: {
                     Image(systemName: "line.horizontal.3")
-                        .foregroundStyle(Color(.black))
+                        .foregroundStyle(colorScheme == .dark ? .white : .black)
                 }),
                 trailing: Button(action: {
                     // action for trailing button
                 }, label: {
                     Image(systemName: "person.circle")
-                        .foregroundStyle(Color(.black))
+                        .foregroundStyle(colorScheme == .dark ? .white : .black)
                 })
             )
             .navigationBarBackButtonHidden()
@@ -76,6 +77,8 @@ struct HomeScreenView: View {
 }
 struct DailyChallengeCard: View {
     let challenge: Challenge
+    @Environment(\.colorScheme) var colorScheme
+
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -104,7 +107,7 @@ struct DailyChallengeCard: View {
                 )
                 .fill(Color(hue: 0.178, saturation: 0.775, brightness: 0.871, opacity: 1))
                 .shadow(
-                    color: Color(uiColor: .black),
+                    color: colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
                     radius: 0,
                     x: 4,
                     y: 6
@@ -116,7 +119,10 @@ struct DailyChallengeCard: View {
                     cornerRadius: 8,
                     style: .circular
                 )
-                .stroke(Color(uiColor: .black), lineWidth: 5)
+                .stroke(
+                    colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
+                    lineWidth: 5
+                )
             }
             
             
@@ -130,6 +136,7 @@ struct DailyChallengeCard: View {
     }
 }
 struct ChallengeCard: View {
+    @Environment(\.colorScheme) var colorScheme
     init() {}
 
     var body: some View {
@@ -173,7 +180,7 @@ struct ChallengeCard: View {
             )
             .fill(Color(hue: 0.178, saturation: 0.775, brightness: 0.871, opacity: 1))
             .shadow(
-                color: Color(uiColor: .black),
+                color:colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black) ,
                 radius: 0,
                 x: 5,
                 y: 6
@@ -184,12 +191,14 @@ struct ChallengeCard: View {
                 cornerRadius: 20,
                 style: .circular
             )
-            .stroke(Color(uiColor: .black), lineWidth: 5)
+            .stroke( colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
+                    lineWidth: 5)
         }
         .padding(16)
     }
 }
 struct FriendActivityCard: View {
+    @Environment(\.colorScheme) var colorScheme
     init() {}
 
     var body: some View {
@@ -222,9 +231,9 @@ struct FriendActivityCard: View {
                 cornerRadius: 20,
                 style: .circular
             )
-            .fill(Color(hue: 0.173, saturation: 0.386, brightness: 0.773, opacity: 1))
+            .fill(Color(hue: 0.7, saturation: 0.56, brightness: 0.973, opacity: 1))
             .shadow(
-                color: Color(uiColor: .black),
+                color: colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
                 radius: 0,
                 x: 3,
                 y: 3
@@ -235,7 +244,7 @@ struct FriendActivityCard: View {
                 cornerRadius: 20,
                 style: .circular
             )
-            .fill(Color(uiColor: .black))
+            .fill(colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black))
             .padding(-1)
         }
         .padding()

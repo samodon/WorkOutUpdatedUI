@@ -2,6 +2,12 @@
 
 Cyber-Gym is an innovative fitness app leveraging artificial intelligence to enable users to compete in various workouts with each other. As a work in progress, Cyber-Gym aims to revolutionize the way we approach fitness by making it more interactive and competitive.
 
+<img width="436" alt="Screenshot 2024-01-23 at 7 46 51 PM" src="https://github.com/samodon/WorkOutUpdatedUI/assets/77257036/42e085ac-6160-44ee-bea2-1da97e5caca8">  
+<img width="427" alt="Screenshot 2024-01-23 at 7 52 47 PM" src="https://github.com/samodon/WorkOutUpdatedUI/assets/77257036/62aa6ce7-911d-4897-b7a4-74c9dcf4625f">
+<img width="438" alt="Screenshot 2024-01-23 at 8 02 22 PM" src="https://github.com/samodon/WorkOutUpdatedUI/assets/77257036/f35c8634-879b-41af-b2d0-44de3d10f3cc">
+
+
+
 ## Features
 
 - **AI-Powered Workout Detection**: Currently, the app supports detection for sit-ups and push-ups, with plans to expand to more exercises.

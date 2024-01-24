@@ -13,7 +13,6 @@ Cyber-Gym is an innovative fitness app leveraging artificial intelligence to ena
 - **AI-Powered Workout Detection**: Currently, the app supports detection for sit-ups and push-ups, with plans to expand to more exercises.
 - **Competitive Challenges**: Engage in daily workout challenges and compete with friends or other app users.
 - **Leaderboard System**: Track your progress and see how you rank against others in real-time.
-- **Social Integration**: Share your achievements and workouts with your social network.
 
 ## Installation
 

@@ -7,74 +7,117 @@
 
 import SwiftUI
 
+extension Notification.Name {
+    static let displayBurgerMenu = Self.init("DisplayBurgerMenuNotification")
+    static let hideBurgerMenu = Self.init("HideBurgerMenuNotification")
+}
+
 struct HomeScreenView: View {
+    @State private var showMenu = false
     @Environment(\.colorScheme) var colorScheme
     init() {}
 
     var body: some View {
         NavigationStack {
-            ScrollView(.vertical, showsIndicators: true) {
-                NavigationLink(destination: ProgressView()) {
-                    ChallengeCard()
-                }
-
-                HStack {
-                    Text("Todays Challenges")
-                        .font(.system(.title3, design: .monospaced))
-                        .bold()
-                    Spacer()
-                    NavigationLink(destination: WorkOutsView()) {
-                        Image(systemName: "chevron.compact.right")
-                            .opacity(1)
-                            .foregroundColor(colorScheme == .dark ? .white : .black)
+            ZStack {
+                ScrollView(.vertical, showsIndicators: true) {
+                    NavigationLink(destination: ProgressView()) {
+                        ChallengeCard()
                     }
-                }
-                .padding()
 
-                ScrollView(.horizontal, showsIndicators: false) { // Horizontal ScrollView
-                    HStack(spacing: 11) {
-                        ForEach(challenges, id: \.id) { challenge in
-                            NavigationLink(destination: LeaderboardView(challengeName: challenge.name, challengeImage: challenge.imageName)) {
-                                DailyChallengeCard(challenge: challenge)
-                            }
+                    HStack {
+                        Text("Todays Challenges")
+                            .font(.system(.title3, design: .monospaced))
+                            .bold()
+                        Spacer()
+                        NavigationLink(destination: WorkOutsView()) {
+                            Image(systemName: "chevron.compact.right")
+                                .opacity(1)
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }
-                    .padding(10) // Padding for starting and ending cards
+                    .padding()
+
+                    ScrollView(.horizontal, showsIndicators: false) { // Horizontal ScrollView
+                        HStack(spacing: 11) {
+                            ForEach(challenges, id: \.id) { challenge in
+                                NavigationLink(destination: LeaderboardView(challengeName: challenge.name, challengeImage: challenge.imageName)) {
+                                    DailyChallengeCard(challenge: challenge)
+                                }
+                            }
+                        }
+                        .padding(10) // Padding for starting and ending cards
+                    }
+                    .frame(height: /* height of your card + any padding */ 200) // Set a fixed height for your horizontal scroll view
+
+                    HStack {
+                        Text("Your Friend Activity")
+                            .font(.system(.title3, design: .monospaced))
+                            .bold()
+
+                        Spacer()
+                        Image(systemName: "chevron.compact.right")
+                            .opacity(1)
+                    }
+                    .padding()
+
+                    FriendActivityCard()
                 }
-                .frame(height: /* height of your card + any padding */ 200) // Set a fixed height for your horizontal scroll view
-
-                HStack {
-                    Text("Your Friend Activity")
-                        .font(.system(.title3, design: .monospaced))
-                        .bold()
-
-                    Spacer()
-                    Image(systemName: "chevron.compact.right")
-                        .opacity(1)
-                }
-                .padding()
-
-                FriendActivityCard()
-            }
-            .navigationTitle("Greetings, <Name>")
-            .navigationBarItems(
-                leading: Button(action: {
-                    // action for leading button
-                }, label: {
-                    Image(systemName: "line.horizontal.3")
-                        .foregroundStyle(colorScheme == .dark ? .white : .black)
-                }),
-                trailing: Button(action: {
-                    // action for trailing button
-                }, label: {
-                    Image(systemName: "person.circle")
-                        .foregroundStyle(colorScheme == .dark ? .white : .black)
-                })
-            )
+                .navigationTitle("Greetings, <Name>")
+                .navigationBarItems(
+                    leading: Button(action: {
+                        // action for leading button
+                        self.showMenu.toggle()
+                    }, label: {
+                        if showMenu {
+                            Image(systemName: "xmark")
+                                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                        }else{
+                            Image(systemName: "line.horizontal.3")
+                                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                        }
+                        
+                    }),
+                    trailing: Button(action: {
+                        // action for trailing button
+                    }, label: {
+                        Image(systemName: "person.circle")
+                            .foregroundStyle(colorScheme == .dark ? .white : .black)
+                    })
+                )
             .navigationBarBackButtonHidden()
+            //.navigationBarTitleDisplayMode(showMenu ? .inline : .large)
+            .navigationBarTitleDisplayMode(.inline)
+            //.animation(.easeInOut(duration: 0.2), value: showMenu)
+                
+                GeometryReader{ _ in
+                    HStack {
+                        SideMenuView()
+                            .offset(x: showMenu ? 0 : -1*(UIScreen.main.bounds.width))
+                            .animation(.easeInOut(duration: 0.2), value: showMenu)
+                        Spacer()
+                    }
+                }
+                .gesture(
+                    DragGesture()
+                        .onEnded { gesture in
+                            if gesture.translation.width > 40 { // Swipe right
+                                withAnimation {
+                                    showMenu = true
+                                }
+                            } else if gesture.translation.width < -40 { // Swipe left
+                                withAnimation {
+                                    showMenu = false
+                                }
+                            }
+                        }
+                )
+                .background(Color.black.opacity(showMenu ? 0.5 :0))
+            }
         }
     }
 }
+
 struct DailyChallengeCard: View {
     let challenge: Challenge
     @Environment(\.colorScheme) var colorScheme

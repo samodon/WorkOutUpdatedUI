@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct WorkOutUpdatedUIApp: App {
+    @StateObject private var userData = UserData()
     var body: some Scene {
         WindowGroup {
             HomeScreenView()
+                .environmentObject(userData)
         }
     }
 }

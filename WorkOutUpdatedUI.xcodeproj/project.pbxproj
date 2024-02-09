@@ -14,6 +14,13 @@
 		0594B2B02ABA91F7000260CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0594B2AF2ABA91F7000260CE /* Assets.xcassets */; };
 		0594B2B32ABA91F7000260CE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0594B2B22ABA91F7000260CE /* Preview Assets.xcassets */; };
 		05AACBC22B69D6B90049416A /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AACBC12B69D6B80049416A /* SideMenuView.swift */; };
+		05AACBC42B6B39700049416A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AACBC32B6B39700049416A /* ViewController.swift */; };
+		05AACBC62B6B39960049416A /* Predictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AACBC52B6B39960049416A /* Predictor.swift */; };
+		05AACBC82B6B39BF0049416A /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AACBC72B6B39BF0049416A /* VideoCapture.swift */; };
+		05AACBCC2B6B3A440049416A /* JumpingJack.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05AACBC92B6B3A410049416A /* JumpingJack.mlmodel */; };
+		05AACBCD2B6B3A440049416A /* SitUp.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05AACBCA2B6B3A420049416A /* SitUp.mlmodel */; };
+		05AACBCE2B6B3A440049416A /* PushUp.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05AACBCB2B6B3A430049416A /* PushUp.mlmodel */; };
+		05AACBD02B6B3B1B0049416A /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AACBCF2B6B3B1B0049416A /* UserData.swift */; };
 		05B34CB92ABB6CE90031FA33 /* WorkOutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B34CB82ABB6CE90031FA33 /* WorkOutsView.swift */; };
 		05B34CBD2ABBC5890031FA33 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B34CBC2ABBC5890031FA33 /* OnboardingView.swift */; };
 		05B34CBF2ABBCB990031FA33 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B34CBE2ABBCB990031FA33 /* ProgressView.swift */; };
@@ -30,6 +37,13 @@
 		0594B2AF2ABA91F7000260CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0594B2B22ABA91F7000260CE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		05AACBC12B69D6B80049416A /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		05AACBC32B6B39700049416A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		05AACBC52B6B39960049416A /* Predictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predictor.swift; sourceTree = "<group>"; };
+		05AACBC72B6B39BF0049416A /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
+		05AACBC92B6B3A410049416A /* JumpingJack.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = JumpingJack.mlmodel; sourceTree = "<group>"; };
+		05AACBCA2B6B3A420049416A /* SitUp.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SitUp.mlmodel; sourceTree = "<group>"; };
+		05AACBCB2B6B3A430049416A /* PushUp.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PushUp.mlmodel; sourceTree = "<group>"; };
+		05AACBCF2B6B3B1B0049416A /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		05B34CB82ABB6CE90031FA33 /* WorkOutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkOutsView.swift; sourceTree = "<group>"; };
 		05B34CBC2ABBC5890031FA33 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		05B34CBE2ABBCB990031FA33 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -69,6 +83,13 @@
 		0594B2AA2ABA91F3000260CE /* WorkOutUpdatedUI */ = {
 			isa = PBXGroup;
 			children = (
+				05AACBC32B6B39700049416A /* ViewController.swift */,
+				05AACBCF2B6B3B1B0049416A /* UserData.swift */,
+				05AACBC72B6B39BF0049416A /* VideoCapture.swift */,
+				05AACBC92B6B3A410049416A /* JumpingJack.mlmodel */,
+				05AACBCB2B6B3A430049416A /* PushUp.mlmodel */,
+				05AACBCA2B6B3A420049416A /* SitUp.mlmodel */,
+				05AACBC52B6B39960049416A /* Predictor.swift */,
 				0594B2AB2ABA91F3000260CE /* WorkOutUpdatedUIApp.swift */,
 				0594B2AD2ABA91F3000260CE /* HomeScreenView.swift */,
 				05B34CC02ABC08D40031FA33 /* ChallengeData.swift */,
@@ -173,11 +194,18 @@
 				053A4D812ABB651F00C20A57 /* LeaderboardView.swift in Sources */,
 				05AACBC22B69D6B90049416A /* SideMenuView.swift in Sources */,
 				05E7291C2ABE1926002C15B8 /* ChartsView.swift in Sources */,
+				05AACBC82B6B39BF0049416A /* VideoCapture.swift in Sources */,
+				05AACBC42B6B39700049416A /* ViewController.swift in Sources */,
 				05E7291E2AC32DFB002C15B8 /* CameraView.swift in Sources */,
 				05B34CB92ABB6CE90031FA33 /* WorkOutsView.swift in Sources */,
 				05B34CBD2ABBC5890031FA33 /* OnboardingView.swift in Sources */,
 				05B34CC12ABC08D40031FA33 /* ChallengeData.swift in Sources */,
+				05AACBCC2B6B3A440049416A /* JumpingJack.mlmodel in Sources */,
+				05AACBCE2B6B3A440049416A /* PushUp.mlmodel in Sources */,
 				0594B2AC2ABA91F3000260CE /* WorkOutUpdatedUIApp.swift in Sources */,
+				05AACBD02B6B3B1B0049416A /* UserData.swift in Sources */,
+				05AACBCD2B6B3A440049416A /* SitUp.mlmodel in Sources */,
+				05AACBC62B6B39960049416A /* Predictor.swift in Sources */,
 				05B34CBF2ABBCB990031FA33 /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,6 +343,7 @@
 				DEVELOPMENT_TEAM = 5QLDF2MFKF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "used to check workouts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -345,6 +374,7 @@
 				DEVELOPMENT_TEAM = 5QLDF2MFKF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "used to check workouts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

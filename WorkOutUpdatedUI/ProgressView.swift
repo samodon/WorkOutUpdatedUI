@@ -8,6 +8,8 @@ import SwiftUI
 
 struct ProgressView: View {
     @State private var pickerSelection: String = "WeekViews"
+    @Environment(\.colorScheme) var colorScheme
+
 
     // This function returns the appropriate color based on the picker's selection
     func colorForSelection() -> Color {
@@ -35,9 +37,9 @@ struct ProgressView: View {
                         cornerRadius: 8,
                         style: .circular
                     )
-                    .fill(Color(hue: 0.167, saturation: 0.133, brightness: 1, opacity: 1))
+                    .fill(colorScheme == .dark ? Color(uiColor: .black): Color(hue: 0.167, saturation: 0.133, brightness: 1, opacity: 1) )
                     .shadow(
-                        color: Color(uiColor: .black),
+                        color: colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
                         radius: 0,
                         x: 3,
                         y: 3
@@ -48,7 +50,7 @@ struct ProgressView: View {
                         cornerRadius: 8,
                         style: .circular
                     )
-                    .stroke(Color(uiColor: .black), lineWidth: 4)
+                    .stroke(colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black), lineWidth: 2)
                 }
                 .padding()
 
@@ -75,7 +77,7 @@ struct ProgressView: View {
                     )
                     .fill(colorForSelection())
                     .shadow(
-                        color: Color(uiColor: .black),
+                        color: colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
                         radius: 0,
                         x: 3,
                         y: 4
@@ -86,7 +88,7 @@ struct ProgressView: View {
                         cornerRadius: 20,
                         style: .circular
                     )
-                    .stroke(Color(uiColor: .black), lineWidth: 4)
+                    .stroke(colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black), lineWidth: 4)
                 }
 
                 HStack {
@@ -114,7 +116,7 @@ struct ProgressView: View {
                     )
                     .fill(colorForSelection())
                     .shadow(
-                        color: Color(uiColor: .black),
+                        color: colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
                         radius: 0,
                         x: 3,
                         y: 4
@@ -125,7 +127,7 @@ struct ProgressView: View {
                         cornerRadius: 20,
                         style: .circular
                     )
-                    .stroke(Color(uiColor: .black), lineWidth: 4)
+                    .stroke(colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black), lineWidth: 4)
                 }
                 HStack {
                     Text("Calendar View")
@@ -152,7 +154,7 @@ struct ProgressView: View {
                     )
                     .fill(colorForSelection())
                     .shadow(
-                        color: Color(uiColor: .black),
+                        color: colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
                         radius: 0,
                         x: 3,
                         y: 4
@@ -163,7 +165,7 @@ struct ProgressView: View {
                         cornerRadius: 20,
                         style: .circular
                     )
-                    .stroke(Color(uiColor: .black), lineWidth: 4)
+                    .stroke(colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black), lineWidth: 4)
                 }
             }
             .navigationTitle("Your Progress")

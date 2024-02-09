@@ -15,7 +15,7 @@ struct WorkOutsView: View {
             ScrollView(.vertical, showsIndicators: true) {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(challenges) { challenge in
-                        NavigationLink(destination: LeaderboardView(challengeName:challenge.name, challengeImage: challenge.imageName)) {
+                        NavigationLink(destination: LeaderboardView(challengeName:challenge.name, challengeImage: challenge.imageName, activity: challenge.name)) {
                             DailyChallengeCard(challenge: challenge)
                         }
                     }

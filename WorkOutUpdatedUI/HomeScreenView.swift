@@ -41,14 +41,14 @@ struct HomeScreenView: View {
                     ScrollView(.horizontal, showsIndicators: false) { // Horizontal ScrollView
                         HStack(spacing: 11) {
                             ForEach(challenges, id: \.id) { challenge in
-                                NavigationLink(destination: LeaderboardView(challengeName: challenge.name, challengeImage: challenge.imageName)) {
+                                NavigationLink(destination: LeaderboardView(challengeName: challenge.name, challengeImage: challenge.imageName, activity: challenge.name)) {
                                     DailyChallengeCard(challenge: challenge)
                                 }
                             }
                         }
                         .padding(10) // Padding for starting and ending cards
                     }
-                    .frame(height: /* height of your card + any padding */ 200) // Set a fixed height for your horizontal scroll view
+                    .frame(height:  200) // Set a fixed height for your horizontal scroll view
 
                     HStack {
                         Text("Your Friend Activity")
@@ -66,7 +66,7 @@ struct HomeScreenView: View {
                 .navigationTitle("Greetings, <Name>")
                 .navigationBarItems(
                     leading: Button(action: {
-                        // action for leading button
+                        
                         self.showMenu.toggle()
                     }, label: {
                         if showMenu {
@@ -79,7 +79,7 @@ struct HomeScreenView: View {
                         
                     }),
                     trailing: Button(action: {
-                        // action for trailing button
+                        
                     }, label: {
                         Image(systemName: "person.circle")
                             .foregroundStyle(colorScheme == .dark ? .white : .black)
@@ -128,7 +128,7 @@ struct DailyChallengeCard: View {
             ZStack {
                 VStack {
                     Spacer()
-                    Text(challenge.name)  // Use challenge title here
+                    Text(challenge.name) 
                         .padding(6)
                         .font(.system(.body, design: .serif))
                         .foregroundColor(Color(uiColor: .black))

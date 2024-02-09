@@ -11,24 +11,28 @@ import ScalingHeaderScrollView
 struct LeaderboardView: View {
     let challengeName: String
     let challengeImage: String
-    var leaderboardEntries: [LeaderboardEntry] = []
+    let activity: String
+    @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var userData: UserData
 
-    init(challengeName: String, challengeImage: String) {
-        self.challengeName = challengeName
-        self.challengeImage = challengeImage
+    // Use UserData.shared directly if it suits your architecture.
+    //var userData: UserData = UserData.shared
 
-        // Generating dummy data for 30 entries
-        for i in 1...30 {
-            leaderboardEntries.append(LeaderboardEntry(userName: "User\(i)", score: Int.random(in: 0...100)))
+    // Convert leaderboardEntries into a computed property
+    var leaderboardEntries: [LeaderboardEntry] {
+        if let score = userData.mainUser.workoutScores[activity] {
+            return [LeaderboardEntry(userName: userData.mainUser.name, score: score)]
         }
+        return []
     }
+
 
     var body: some View {
         NavigationStack {
             LeaderboardCard(challengeImage: challengeImage, entries: leaderboardEntries)
             HStack {
                 
-                NavigationLink(destination: CameraView()) {
+                NavigationLink(destination: CameraView(challengeName: challengeName)) {
                     Text("Solo")
                         .font(.system(.subheadline, design: .serif))
                 }
@@ -41,7 +45,7 @@ struct LeaderboardView: View {
                     )
                     .fill(Color(hue: 0.243, saturation: 0.386, brightness: 0.773, opacity: 1))
                     .shadow(
-                        color: Color(uiColor: .black),
+                        color: colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
                         radius: 0,
                         x: 2,
                         y: 2
@@ -52,7 +56,7 @@ struct LeaderboardView: View {
                         cornerRadius: 8,
                         style: .circular
                     )
-                    .stroke(Color(uiColor: .black), lineWidth: 3)
+                    .stroke(colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black), lineWidth: 3)
                 }
 
                 Spacer()
@@ -71,7 +75,7 @@ struct LeaderboardView: View {
                     )
                     .fill(Color(hue: 0.243, saturation: 0.386, brightness: 0.773, opacity: 1))
                     .shadow(
-                        color: Color(uiColor: .black),
+                        color: colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
                         radius: 0,
                         x: 2,
                         y: 2
@@ -82,7 +86,7 @@ struct LeaderboardView: View {
                         cornerRadius: 8,
                         style: .circular
                     )
-                    .stroke(Color(uiColor: .black), lineWidth: 3)
+                    .stroke(colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black), lineWidth: 3)
                 }
 
                 Spacer()
@@ -99,7 +103,7 @@ struct LeaderboardView: View {
                     )
                     .fill(Color(hue: 0.243, saturation: 0.386, brightness: 0.773, opacity: 1))
                     .shadow(
-                        color: Color(uiColor: .black),
+                        color: colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
                         radius: 0,
                         x: 2,
                         y: 2
@@ -110,7 +114,7 @@ struct LeaderboardView: View {
                         cornerRadius: 8,
                         style: .circular
                     )
-                    .stroke(Color(uiColor: .black), lineWidth: 3)
+                    .stroke(colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black), lineWidth: 3)
                 }
             }
             .padding([.leading, .trailing, .bottom])
@@ -128,6 +132,7 @@ struct LeaderboardEntry {
 struct LeaderboardCard: View {
     let challengeImage: String
     var entries: [LeaderboardEntry]
+    @Environment(\.colorScheme) var colorScheme
 
     init(challengeImage: String, entries: [LeaderboardEntry]) {
         self.challengeImage = challengeImage
@@ -187,9 +192,9 @@ struct LeaderboardCard: View {
                 cornerRadius: 8,
                 style: .circular
             )
-            .stroke(Color(uiColor: .black), lineWidth: 4)
+            .stroke(colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black), lineWidth: 4)
             .shadow(
-                color: Color(uiColor: .black),
+                color: colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
                 radius: 0,
                 x: 3,
                 y: 2
@@ -201,7 +206,7 @@ struct LeaderboardCard: View {
 
 
 #Preview {
-    LeaderboardView(challengeName: "Push Ups", challengeImage: "push_up_image")
+    LeaderboardView(challengeName: "Push Ups", challengeImage: "push_up_image", activity: "Push Ups")
     //ContentView()
 }
 

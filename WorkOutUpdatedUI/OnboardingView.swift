@@ -173,9 +173,9 @@ struct OnboardingView2: View {
                     TextField("Gender", text: .constant(""))
                     Spacer()
                     Picker("Picker", selection: .constant(0)) {
-                        Text("Option 1").tag(1)
-                        Text("Option 2").tag(2)
-                        Text("Option 3").tag(3)
+                        Text("Male").tag(1)
+                        Text("Female").tag(2)
+                        Text("Prefer not to say").tag(3)
                     }
                     .pickerStyle(.menu)
                     .frame(

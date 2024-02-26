@@ -22,11 +22,6 @@ Follow these steps to install and run Cyber-Gym:
 # Clone the repository
 git clone [https://github.com/samodon/WorkOutUpdatedUI]
 
-# Navigate to the project directory
-cd [your-project-directory]
-
-# Install necessary dependencies (if applicable)
-
 # Run the app
 ```
 ## Development Details

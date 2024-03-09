@@ -15,7 +15,7 @@ extension Notification.Name {
 struct HomeScreenView: View {
     @State private var showMenu = false
     @Environment(\.colorScheme) var colorScheme
-    init() {}
+  
 
     var body: some View {
         NavigationStack {
@@ -38,7 +38,7 @@ struct HomeScreenView: View {
                     }
                     .padding()
 
-                    ScrollView(.horizontal, showsIndicators: false) { // Horizontal ScrollView
+                    ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 11) {
                             ForEach(challenges, id: \.id) { challenge in
                                 NavigationLink(destination: LeaderboardView(challengeName: challenge.name, challengeImage: challenge.imageName, activity: challenge.name)) {
@@ -48,7 +48,7 @@ struct HomeScreenView: View {
                         }
                         .padding(10) // Padding for starting and ending cards
                     }
-                    .frame(height:  200) // Set a fixed height for your horizontal scroll view
+                    .frame(height:  200)
 
                     HStack {
                         Text("Your Friend Activity")
@@ -86,9 +86,8 @@ struct HomeScreenView: View {
                     })
                 )
             .navigationBarBackButtonHidden()
-            //.navigationBarTitleDisplayMode(showMenu ? .inline : .large)
             .navigationBarTitleDisplayMode(.inline)
-            //.animation(.easeInOut(duration: 0.2), value: showMenu)
+        
                 
                 GeometryReader{ _ in
                     HStack {
@@ -143,38 +142,13 @@ struct DailyChallengeCard: View {
                         .fill(Color(uiColor: .systemGray))
                     }
             }
-            .background(alignment: .center) {
-                RoundedRectangle(
-                    cornerRadius: 8,
-                    style: .circular
-                )
-                .fill(Color(hue: 0.178, saturation: 0.775, brightness: 0.871, opacity: 1))
-                .shadow(
-                    color: colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
-                    radius: 0,
-                    x: 4,
-                    y: 6
-                )
-                
-            }
-            .background(alignment: .center) {
-                RoundedRectangle(
-                    cornerRadius: 8,
-                    style: .circular
-                )
-                .stroke(
-                    colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
-                    lineWidth: 5
-                )
-            }
-            
-            
-
+            .modifier(CardStyle(cornerRadius: 8.0))
+            .padding(4)
             Text("Your high score:")
                 .font(.system(.caption2, design: .default))
                 .padding([.leading], 6)
                 .padding([.top], 2)
-                .foregroundColor(.black)
+                .foregroundColor(colorScheme == .dark ? Color(uiColor: .white) : Color(uiColor: .black))
         }
     }
 }
@@ -185,21 +159,16 @@ struct ChallengeCard: View {
     var body: some View {
         ZStack(alignment: .top) {
             CalorieChartView()
-                //.frame(width: 245)
                 .offset(y:-15)
                 .padding(10)
             VStack(alignment: .trailing) {
                 Spacer()
-                //Text("450")
                     .padding()
                     .font(.system(.title3, design: .monospaced))
                     .bold()
                     .foregroundColor(Color(hue: 0.583, saturation: 1, brightness: 0.4, opacity: 1))
 
                 HStack {
-//                    Text("Total Calories Burnt:")
-//                        .padding()
-                    //Spacer()
                     Text("Calories burned today: 700")
                         .font(.system(.title2, design: .serif))
                         .bold()
@@ -216,29 +185,43 @@ struct ChallengeCard: View {
             maxHeight: 150,
             alignment: .bottom
         )
-        .background(alignment: .center) {
-            RoundedRectangle(
-                cornerRadius: 20,
-                style: .circular
-            )
-            .fill(Color(hue: 0.178, saturation: 0.775, brightness: 0.871, opacity: 1))
-            .shadow(
-                color:colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black) ,
-                radius: 0,
-                x: 5,
-                y: 6
-            )
-        }
-        .background(alignment: .center) {
-            RoundedRectangle(
-                cornerRadius: 20,
-                style: .circular
-            )
-            .stroke( colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
-                    lineWidth: 5)
-        }
+        .modifier(CardStyle(cornerRadius: 20))
         .padding(16)
     }
+}
+
+struct CardStyle : ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+    var cornerRadius: CGFloat
+    
+    func body(content: Content) -> some View {
+        content
+            .background(alignment: .center) {
+                RoundedRectangle(
+                    cornerRadius: cornerRadius,
+                    style: .circular
+                )
+                .fill(Color(hue: 0.178, saturation: 0.775, brightness: 0.871, opacity: 1))
+                .shadow(
+                    color:colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black) ,
+                    radius: 0,
+                    x: 5,
+                    y: 6
+                )
+            }
+            .background(alignment: .center) {
+                RoundedRectangle(
+                    cornerRadius: cornerRadius,
+                    style: .circular
+                )
+                .stroke( colorScheme == .dark ? Color(uiColor: .purple) : Color(uiColor: .black),
+                         lineWidth: 5)
+            }
+    }
+    init(cornerRadius: CGFloat) {
+        self.cornerRadius = cornerRadius
+    }
+    
 }
 struct FriendActivityCard: View {
     @Environment(\.colorScheme) var colorScheme

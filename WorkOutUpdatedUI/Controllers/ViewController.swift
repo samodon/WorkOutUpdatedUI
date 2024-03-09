@@ -14,7 +14,7 @@ class ViewController: UIViewController {
 
     var workoutLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false // Enable Auto Layout
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 24)
         label.textColor = .white
         return label
@@ -54,11 +54,13 @@ class ViewController: UIViewController {
         
         view.layer.addSublayer(previewLayer)
         previewLayer.frame = view.bounds
-        previewLayer.videoGravity = .resizeAspect  // Set the videoGravity property here.
+        previewLayer.videoGravity = .resizeAspect  
+       
+        //this is where the color is
         
         view.layer.addSublayer(pointsLayer)
         pointsLayer.frame = view.bounds
-        pointsLayer.strokeColor = UIColor.green.cgColor
+        pointsLayer.strokeColor = UIColor.blue.cgColor
     }
     }
     extension ViewController: PredictorDelegate{
@@ -170,7 +172,7 @@ class ViewController: UIViewController {
         let combinedPath = CGMutablePath()
         
         for point in convertedPoints{
-            let dotPath = UIBezierPath(ovalIn: CGRect(x: point.x, y: point.y, width: 10, height: 10))
+            let dotPath = UIBezierPath(ovalIn: CGRect(x: point.x, y: point.y, width: 4, height: 4))
             combinedPath.addPath(dotPath.cgPath)
         }
         

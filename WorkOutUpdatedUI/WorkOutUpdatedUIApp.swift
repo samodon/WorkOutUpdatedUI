@@ -9,11 +9,19 @@ import SwiftUI
 
 @main
 struct WorkOutUpdatedUIApp: App {
-    @StateObject private var userData = UserData()
+    @StateObject var userData = UserData()
+    
     var body: some Scene {
         WindowGroup {
+//            if !userData.hasValidData{
+//                OnboardingView(userData: UserData())
+//                    .environmentObject(userData)
+//            }else{
+//                HomeScreenView()
+//                    .environmentObject(userData)
+//            }
             HomeScreenView()
-                .environmentObject(userData)
+                        .environmentObject(userData)
         }
     }
 }

@@ -25,7 +25,7 @@ struct ProgressView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView(.vertical, showsIndicators: true) {
+            ScrollView(.vertical, showsIndicators: false) {
                 Picker("Picker", selection: $pickerSelection) { // Notice the $ sign for two-way binding
                     Text("Weekly").tag("WeekViews")
                     Text("Monthly").tag("MonthViews")

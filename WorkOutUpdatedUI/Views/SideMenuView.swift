@@ -76,7 +76,7 @@ struct SideMenuView: View {
                 Divider()
                 // Settings
                 HStack {
-                    NavigationLink(destination: WorkOutsView()) {
+                    NavigationLink(destination: SettingsView()) {
                         Image(systemName: "gearshape")
                             .bold()
                         .font(.title3)

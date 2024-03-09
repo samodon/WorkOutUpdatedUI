@@ -21,7 +21,7 @@ struct LeaderboardView: View {
     // Convert leaderboardEntries into a computed property
     var leaderboardEntries: [LeaderboardEntry] {
         if let score = userData.mainUser.workoutScores[activity] {
-            return [LeaderboardEntry(userName: userData.mainUser.name, score: score)]
+            return [LeaderboardEntry(userName: userData.mainUser.username, score: score)]
         }
         return []
     }

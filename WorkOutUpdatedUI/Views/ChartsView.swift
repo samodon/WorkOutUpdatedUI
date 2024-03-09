@@ -16,7 +16,7 @@ func generateSampleData() -> [DailyCalories] {
 
 struct CalorieChartView: View {
     @Environment(\.colorScheme) var colorScheme
-    // Generate the sample data and store it in a property
+
     let weekData = generateSampleData()
     
     var body: some View {
@@ -27,40 +27,43 @@ struct CalorieChartView: View {
                     y: .value("Calories", dayData.caloriesBurnt) // Calories as y value
                 )
                 .lineStyle(StrokeStyle(lineWidth: 2))
-                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                .foregroundStyle(colorScheme == .dark ? .black : .black)
                 PointMark(
                     x: .value("Day", dayData.day),
                     y: .value("Calories", dayData.caloriesBurnt)
                 )
-                .foregroundStyle(colorScheme == .dark ? .white : .black)
+                .foregroundStyle(colorScheme == .dark ? .black : .black)
             }
         }
         .chartXAxis {
             AxisMarks(values: .automatic) { _ in
-                AxisGridLine(centered: true, stroke: StrokeStyle(dash: [1, 2, 4]))
+                AxisGridLine(centered: true, stroke: StrokeStyle(lineWidth: 1))
+                    .foregroundStyle(colorScheme == .dark ? Color.black : Color.black)
                     // Gridline style
                 AxisTick(stroke: StrokeStyle(lineWidth: 2))
+                
                     // Tick style
                 AxisValueLabel()
-                    .foregroundStyle(colorScheme == .dark ? Color.black : Color.black) // Dynamic color for labels
+                    .foregroundStyle(colorScheme == .dark ? Color.black : Color.black)
             }
         }
         .chartYAxis {
             AxisMarks(values: .automatic) { _ in
-                AxisGridLine(centered: true, stroke: StrokeStyle(dash: [1, 2]))
+                AxisGridLine(centered: true, stroke: StrokeStyle(lineWidth: 1))
+                    //.foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
                     // Gridline style
-                AxisTick(centered: true, stroke: StrokeStyle(lineWidth: 2))
+                AxisTick(centered: true, stroke: StrokeStyle(lineWidth: 0))
+                    .foregroundStyle(colorScheme == .dark ? Color.black : Color.black)
                     // Tick style
                 AxisValueLabel()
-                    .foregroundStyle(colorScheme == .dark ? Color.black : Color.black) // Dynamic color for labels
-            }
+                    .foregroundStyle(colorScheme == .dark ? Color.black : Color.black)            }
         }
         .padding()
     }
 }
 func generateSampleChallengeData() -> [ChallengeData] {
     return challenges.map { challenge in
-        let randomCalories = Int.random(in: 50...500) // Assuming a range of calories for each challenge
+        let randomCalories = Int.random(in: 50...500)
         return ChallengeData(challenge: challenge, caloriesBurnt: randomCalories)
     }
 }

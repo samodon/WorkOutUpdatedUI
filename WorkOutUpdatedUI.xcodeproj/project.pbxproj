@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05185DA02B8BD2D600BCA35B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05185D9F2B8BD2D600BCA35B /* SettingsView.swift */; };
 		051AA3E62ABCC9AF00C5EAEA /* ScalingHeaderScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 051AA3E52ABCC9AF00C5EAEA /* ScalingHeaderScrollView */; };
 		053A4D812ABB651F00C20A57 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A4D802ABB651F00C20A57 /* LeaderboardView.swift */; };
 		0594B2AC2ABA91F3000260CE /* WorkOutUpdatedUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0594B2AB2ABA91F3000260CE /* WorkOutUpdatedUIApp.swift */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05185D9F2B8BD2D600BCA35B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		05185DA12B8C05CB00BCA35B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		053A4D802ABB651F00C20A57 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		0594B2A82ABA91F3000260CE /* WorkOutUpdatedUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkOutUpdatedUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0594B2AB2ABA91F3000260CE /* WorkOutUpdatedUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkOutUpdatedUIApp.swift; sourceTree = "<group>"; };
@@ -64,6 +67,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05185D992B8BB56500BCA35B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				05AACBCF2B6B3B1B0049416A /* UserData.swift */,
+				05AACBC52B6B39960049416A /* Predictor.swift */,
+				05B34CC02ABC08D40031FA33 /* ChallengeData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		05185D9A2B8BB58A00BCA35B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0594B2AD2ABA91F3000260CE /* HomeScreenView.swift */,
+				05B34CB82ABB6CE90031FA33 /* WorkOutsView.swift */,
+				05B34CBC2ABBC5890031FA33 /* OnboardingView.swift */,
+				05B34CBE2ABBCB990031FA33 /* ProgressView.swift */,
+				05E7291B2ABE1926002C15B8 /* ChartsView.swift */,
+				053A4D802ABB651F00C20A57 /* LeaderboardView.swift */,
+				05E7291D2AC32DFA002C15B8 /* CameraView.swift */,
+				05AACBC12B69D6B80049416A /* SideMenuView.swift */,
+				05185D9F2B8BD2D600BCA35B /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		05185D9B2B8BB5A800BCA35B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				05AACBC32B6B39700049416A /* ViewController.swift */,
+				05AACBC72B6B39BF0049416A /* VideoCapture.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		05185D9C2B8BB5FF00BCA35B /* VisionModels */ = {
+			isa = PBXGroup;
+			children = (
+				05AACBC92B6B3A410049416A /* JumpingJack.mlmodel */,
+				05AACBCB2B6B3A430049416A /* PushUp.mlmodel */,
+				05AACBCA2B6B3A420049416A /* SitUp.mlmodel */,
+			);
+			path = VisionModels;
+			sourceTree = "<group>";
+		};
 		0594B29F2ABA91F3000260CE = {
 			isa = PBXGroup;
 			children = (
@@ -83,25 +131,14 @@
 		0594B2AA2ABA91F3000260CE /* WorkOutUpdatedUI */ = {
 			isa = PBXGroup;
 			children = (
-				05AACBC32B6B39700049416A /* ViewController.swift */,
-				05AACBCF2B6B3B1B0049416A /* UserData.swift */,
-				05AACBC72B6B39BF0049416A /* VideoCapture.swift */,
-				05AACBC92B6B3A410049416A /* JumpingJack.mlmodel */,
-				05AACBCB2B6B3A430049416A /* PushUp.mlmodel */,
-				05AACBCA2B6B3A420049416A /* SitUp.mlmodel */,
-				05AACBC52B6B39960049416A /* Predictor.swift */,
+				05185DA12B8C05CB00BCA35B /* Info.plist */,
+				05185D9B2B8BB5A800BCA35B /* Controllers */,
+				05185D992B8BB56500BCA35B /* Models */,
+				05185D9C2B8BB5FF00BCA35B /* VisionModels */,
 				0594B2AB2ABA91F3000260CE /* WorkOutUpdatedUIApp.swift */,
-				0594B2AD2ABA91F3000260CE /* HomeScreenView.swift */,
-				05B34CC02ABC08D40031FA33 /* ChallengeData.swift */,
-				05B34CB82ABB6CE90031FA33 /* WorkOutsView.swift */,
-				05B34CBC2ABBC5890031FA33 /* OnboardingView.swift */,
-				05B34CBE2ABBCB990031FA33 /* ProgressView.swift */,
-				05E7291B2ABE1926002C15B8 /* ChartsView.swift */,
-				053A4D802ABB651F00C20A57 /* LeaderboardView.swift */,
+				05185D9A2B8BB58A00BCA35B /* Views */,
 				0594B2AF2ABA91F7000260CE /* Assets.xcassets */,
 				0594B2B12ABA91F7000260CE /* Preview Content */,
-				05E7291D2AC32DFA002C15B8 /* CameraView.swift */,
-				05AACBC12B69D6B80049416A /* SideMenuView.swift */,
 			);
 			path = WorkOutUpdatedUI;
 			sourceTree = "<group>";
@@ -193,6 +230,7 @@
 				0594B2AE2ABA91F3000260CE /* HomeScreenView.swift in Sources */,
 				053A4D812ABB651F00C20A57 /* LeaderboardView.swift in Sources */,
 				05AACBC22B69D6B90049416A /* SideMenuView.swift in Sources */,
+				05185DA02B8BD2D600BCA35B /* SettingsView.swift in Sources */,
 				05E7291C2ABE1926002C15B8 /* ChartsView.swift in Sources */,
 				05AACBC82B6B39BF0049416A /* VideoCapture.swift in Sources */,
 				05AACBC42B6B39700049416A /* ViewController.swift in Sources */,
@@ -326,6 +364,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -343,6 +382,8 @@
 				DEVELOPMENT_TEAM = 5QLDF2MFKF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WorkOutUpdatedUI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cyber Gym";
 				INFOPLIST_KEY_NSCameraUsageDescription = "used to check workouts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -355,7 +396,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.weather.WorkOutUpdatedUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Samodon.WorkOutUpdatedUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -374,6 +415,8 @@
 				DEVELOPMENT_TEAM = 5QLDF2MFKF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WorkOutUpdatedUI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cyber Gym";
 				INFOPLIST_KEY_NSCameraUsageDescription = "used to check workouts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -386,7 +429,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.weather.WorkOutUpdatedUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Samodon.WorkOutUpdatedUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

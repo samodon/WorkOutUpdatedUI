@@ -1,25 +1,32 @@
-import Foundation
+import SwiftUI
 import Combine
 
 class UserData: ObservableObject {
     @Published var mainUser: User
-    //static let shared = UserData()
     
-    struct User: Identifiable {
+    struct User: Identifiable, Codable {
         let id: UUID
-        var name: String
+        var username: String
         var workoutScores: [String: Int]
+     
         
-        init(id: UUID = UUID(), name: String, workoutScores: [String: Int] = [:]) {
+        init(id: UUID = UUID(), username: String, workoutScores: [String: Int] = [:]) {
             self.id = id
-            self.name = name
+            self.username = username
             self.workoutScores = workoutScores
         }
     }
 
     init() {
-        // Initialize the main user with some default data or fetch from storage
-        mainUser = User(name: "John Doe")
+        if let savedUserData = UserDefaults.standard.object(forKey: "mainUser") as? Data {
+            let decoder = JSONDecoder()
+            if let loadedUser = try? decoder.decode(User.self, from: savedUserData) {
+                self.mainUser = loadedUser
+                return
+            }
+        }
+        // Initialize the main user with some default data if not found in UserDefaults
+        mainUser = User(username: "JohnDoe")
     }
 
     func updateHighScore(activity: String, newScore: Int) {
@@ -27,20 +34,26 @@ class UserData: ObservableObject {
         print("Updating score for \(activity). Current score: \(currentScore), New score: \(newScore)")
         if newScore > currentScore {
             mainUser.workoutScores[activity] = newScore
+            saveToUserDefaults()
             print("Score updated to \(newScore)")
         }
     }
-
+    
+    func saveToUserDefaults() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(mainUser) {
+            UserDefaults.standard.set(encoded, forKey: "mainUser")
+        }
+    }
     
     // Method to generate leaderboard entries for a specific activity
     func leaderboardEntries(for activity: String) -> [LeaderboardEntry] {
         // Since we're dealing with a single user, this method will return an array with one or zero elements
         if let score = mainUser.workoutScores[activity] {
-            return [LeaderboardEntry(userName: mainUser.name, score: score)]
+            return [LeaderboardEntry(userName: mainUser.username, score: score)]
         } else {
             // If there's no score for the activity, return an empty array
             return []
         }
     }
 }
-

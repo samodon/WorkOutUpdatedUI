@@ -18,106 +18,21 @@ struct OnboardingView: View {
                 HStack {
                     TextField("Username", text: .constant(""))
                 }
-                .padding()
-                .background(alignment: .center) {
-                    RoundedRectangle(
-                        cornerRadius: 8,
-                        style: .circular
-                    )
-                    .fill(Color(hue: 0.532, saturation: 0.824, brightness: 0.737, opacity: 1))
-                    .shadow(
-                        color: Color(uiColor: .black),
-                        radius: 0,
-                        x: 3,
-                        y: 5
-                    )
-                }
-                .background(alignment: .center) {
-                    RoundedRectangle(
-                        cornerRadius: 8,
-                        style: .circular
-                    )
-                    .stroke(Color(uiColor: .black), lineWidth: 4)
-                }
-                .padding()
+                .modifier(TextFieldStyle())
 
                 HStack {
                     TextField("First Name", text: .constant(""))
                 }
-                .padding()
-                .background(alignment: .center) {
-                    RoundedRectangle(
-                        cornerRadius: 8,
-                        style: .circular
-                    )
-                    .fill(Color(hue: 0.532, saturation: 0.824, brightness: 0.737, opacity: 1))
-                    .shadow(
-                        color: Color(uiColor: .black),
-                        radius: 0,
-                        x: 3,
-                        y: 5
-                    )
-                }
-                .background(alignment: .center) {
-                    RoundedRectangle(
-                        cornerRadius: 8,
-                        style: .circular
-                    )
-                    .stroke(Color(uiColor: .black), lineWidth: 4)
-                }
-                .padding()
-
+                .modifier(TextFieldStyle())
                 HStack {
                     TextField("Last Name", text: .constant(""))
                 }
-                .padding()
-                .background(alignment: .center) {
-                    RoundedRectangle(
-                        cornerRadius: 8,
-                        style: .circular
-                    )
-                    .fill(Color(hue: 0.532, saturation: 0.824, brightness: 0.737, opacity: 1))
-                    .shadow(
-                        color: Color(uiColor: .black),
-                        radius: 0,
-                        x: 3,
-                        y: 5
-                    )
-                }
-                .background(alignment: .center) {
-                    RoundedRectangle(
-                        cornerRadius: 8,
-                        style: .circular
-                    )
-                    .stroke(Color(uiColor: .black), lineWidth: 4)
-                }
-                .padding()
+                .modifier(TextFieldStyle())
 
                 HStack {
                     SecureField("password", text: .constant(""))
                 }
-                .padding()
-                .background(alignment: .center) {
-                    RoundedRectangle(
-                        cornerRadius: 8,
-                        style: .circular
-                    )
-                    .fill(Color(hue: 0.532, saturation: 0.824, brightness: 0.737, opacity: 1))
-                    .shadow(
-                        color: Color(uiColor: .black),
-                        radius: 0,
-                        x: 3,
-                        y: 5
-                    )
-                }
-                .background(alignment: .center) {
-                    RoundedRectangle(
-                        cornerRadius: 8,
-                        style: .circular
-                    )
-                    .stroke(Color(uiColor: .black), lineWidth: 4)
-                }
-                .padding()
+                .modifier(TextFieldStyle())
 
                 Spacer()
                 HStack {
@@ -146,28 +61,7 @@ struct OnboardingView2: View {
                 HStack {
                     TextField("Email", text: .constant(""))
                 }
-                .padding()
-                .background(alignment: .center) {
-                    RoundedRectangle(
-                        cornerRadius: 8,
-                        style: .circular
-                    )
-                    .fill(Color(hue: 0.532, saturation: 0.824, brightness: 0.737, opacity: 1))
-                    .shadow(
-                        color: Color(uiColor: .black),
-                        radius: 0,
-                        x: 3,
-                        y: 5
-                    )
-                }
-                .background(alignment: .center) {
-                    RoundedRectangle(
-                        cornerRadius: 8,
-                        style: .circular
-                    )
-                    .stroke(Color(uiColor: .black), lineWidth: 4)
-                }
-                .padding()
+                .modifier(TextFieldStyle())
 
                 HStack {
                     TextField("Gender", text: .constant(""))
@@ -182,28 +76,7 @@ struct OnboardingView2: View {
                         height: 20
                     )
                 }
-                .padding()
-                .background(alignment: .center) {
-                    RoundedRectangle(
-                        cornerRadius: 8,
-                        style: .circular
-                    )
-                    .fill(Color(hue: 0.532, saturation: 0.824, brightness: 0.737, opacity: 1))
-                    .shadow(
-                        color: Color(uiColor: .black),
-                        radius: 0,
-                        x: 3,
-                        y: 5
-                    )
-                }
-                .background(alignment: .center) {
-                    RoundedRectangle(
-                        cornerRadius: 8,
-                        style: .circular
-                    )
-                    .stroke(Color(uiColor: .black), lineWidth: 4)
-                }
-                .padding()
+                .modifier(TextFieldStyle())
 
                 Button(role: .none) {} label: {
                     HStack {
@@ -211,28 +84,7 @@ struct OnboardingView2: View {
                         Spacer()
                         Image(systemName: "person.crop.circle")
                     }
-                    .padding()
-                    .background(alignment: .center) {
-                        RoundedRectangle(
-                            cornerRadius: 8,
-                            style: .circular
-                        )
-                        .fill(Color(hue: 0.532, saturation: 0.824, brightness: 0.737, opacity: 1))
-                        .shadow(
-                            color: Color(uiColor: .black),
-                            radius: 0,
-                            x: 3,
-                            y: 5
-                        )
-                    }
-                    .background(alignment: .center) {
-                        RoundedRectangle(
-                            cornerRadius: 8,
-                            style: .circular
-                        )
-                        .stroke(Color(uiColor: .black), lineWidth: 4)
-                    }
-                    .padding()
+                    .modifier(TextFieldStyle())
                 }
             }
             .navigationTitle("Enter some more info")
@@ -260,12 +112,29 @@ struct OnboardingView2: View {
             .ignoresSafeArea(edges: [.all])
         }
     }
+
+}
+
+struct TextFieldStyle: ViewModifier {
+    init(){}
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .background(alignment: .center) {
+                RoundedRectangle(cornerRadius: 8, style: .circular)
+                    .fill(Color(hue: 0.532, saturation: 0.824, brightness: 0.737, opacity: 1))
+                    .shadow(color: Color(uiColor: .black), radius: 0, x: 3, y: 5)
+            }
+            .background(alignment: .center) {
+                RoundedRectangle(cornerRadius: 8, style: .circular)
+                    .stroke(Color(uiColor: .black), lineWidth: 4)
+            }
+            .padding()
+    }
 }
 
 
-struct OnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingView()
-    }
+#Preview{
+    OnboardingView()
 }
 
